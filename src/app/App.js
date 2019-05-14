@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { Sidebar } from "../components/organisms";
 
-import "../App.css";
+import "App.css";
 
 const Layout = styled.div`
   min-height: 100vh;

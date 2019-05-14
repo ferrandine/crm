@@ -2,11 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { ifProp } from "styled-tools";
 
-import { space } from "../../const";
+import { space } from "const";
 
 const SidebarStyle = styled.div`
   position: fixed;
-  width: 30%;
+  width: 20%;
   height: 100%;
   background: #fff;
 `;
