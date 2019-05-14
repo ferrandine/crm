@@ -5,13 +5,14 @@ import { ifProp } from "styled-tools";
 import { space } from "const";
 
 const SidebarStyle = styled.div`
-  position: fixed;
-  width: 20%;
-  height: 100%;
+  width: 25%;
+  height: 100vh;
   background: #fff;
 `;
 
 const Navbar = styled.ul`
+  padding-left: 3rem;
+  padding-top: 15rem;
   list-style: none;
 `;
 
@@ -19,7 +20,6 @@ const NavbarLink = styled.li`
   display: block;
   margin-bottom: ${space.base};
   color: #9f9f9f;
-  font-weight: bold;
 
   ${ifProp("active", "color: black;")}
 `;
