@@ -1,10 +1,17 @@
-.container {
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  min-height: 100vh;
   display: flex;
   height: 100%;
 }
 
 .sidebar {
-  background:#e16a4b;
+  background: #e16a4b;
   width: 245px;
 }
 
