@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
+import { getLastSewersRegistered } from "services/sewer";
 import { space, radius, color } from "const";
 
 import { Title, Subtitle } from "components/atoms";
@@ -76,26 +77,31 @@ const SectionColumn = ({ title, subtitle, children }) => {
 };
 
 export const HomeApp = () => {
+  const [sewers, setSewers] = useState(null);
+  const getLastSewers = () => {
+    getLastSewersRegistered().then(respValue => setSewers(respValue));
+  };
+
+  useEffect(() => {
+    getLastSewers();
+  });
+
   return (
     <SectionColumn
       title="Derniers couturiers"
       subtitle="Ce mois-ci, 6 inscriptions dont 3 validées"
     >
       <CouturierList>
-        <CouturierElement>
-          <CouturierPhoto />
-          <div>
-            <CouturierTitle>Julien Michalet</CouturierTitle>
-            <Subtitle>Inscription hier à 23h20</Subtitle>
-          </div>
-        </CouturierElement>
-        <CouturierElement>
-          <CouturierPhoto />
-          <div>
-            <CouturierTitle>Julien Michalet</CouturierTitle>
-            <Subtitle>Inscription hier à 23h20</Subtitle>
-          </div>
-        </CouturierElement>
+        {sewers &&
+          sewers.map(s => (
+            <CouturierElement>
+              <CouturierPhoto />
+              <div>
+                <CouturierTitle>{s.name}</CouturierTitle>
+                <Subtitle>{s.registeringDate}</Subtitle>
+              </div>
+            </CouturierElement>
+          ))}
       </CouturierList>
     </SectionColumn>
   );

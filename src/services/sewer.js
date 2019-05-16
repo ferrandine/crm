@@ -1,3 +1,9 @@
-export const getLastSewersRegisters = () => {
-  return Promise.resolve(123);
+export const getLastSewersRegistered = () => {
+  return Promise.resolve([
+    {
+      name: "Julien Michalet",
+      registeringDate: "coucou",
+      photo: null
+    }
+  ]);
 };
