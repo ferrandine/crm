@@ -24,5 +24,6 @@ export const font = {
 export const color = {
   grey: {
     base: "#9f9f9f"
-  }
+  },
+  border: "#ededed"
 };

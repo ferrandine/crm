@@ -17,10 +17,10 @@ const Layout = styled.div`
 `;
 
 const Column = styled.div`
-  width: 30%;
+  width: 20%;
   background: #fff;
   margin-left: 3rem;
-  padding: ${space.md} ${space.base};
+  padding: ${space.md} ${space.lg};
   border-radius: ${radius.big};
 `;
 
@@ -28,6 +28,9 @@ const HeadColumn = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  &:not(:last-child) {
+    margin-bottom: ${space.md};
+  }
 `;
 
 const Subtitle = styled.p`
@@ -35,7 +38,21 @@ const Subtitle = styled.p`
   font-size: ${rem(12)};
 `;
 
-const SectionColumn = ({ title, subtitle }) => {
+const CouturierPhoto = styled.img`
+  display: block;
+  width: 48px;
+  height: 48px;
+  background: lightgrey;
+  border-radius: ${radius.big};
+  margin-right: ${space.base};
+`;
+
+const CouturierTitle = styled.span`
+  display: block;
+  margin-bottom: ${space.xxs};
+`;
+
+const SectionColumn = ({ title, subtitle, children }) => {
   return (
     <Column>
       <HeadColumn>
@@ -43,12 +60,36 @@ const SectionColumn = ({ title, subtitle }) => {
           <Title type="h3">{title}</Title>
           <Subtitle>{subtitle}</Subtitle>
         </div>
-
-        {/* <span>Tous</span> */}
       </HeadColumn>
+      {children}
     </Column>
   );
 };
+
+const CouturierElement = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0 -${space.lg};
+  padding: ${space.lg};
+`;
+
+const CouturierList = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  ${CouturierElement}:first-child {
+    padding-top: ${space.xs};
+  }
+
+  ${CouturierElement}:not(:last-child) {
+    border-bottom: 1px solid ${color.border};
+  }
+
+  ${CouturierElement}:last-child {
+    padding-bottom: ${space.xs};
+  }
+`;
 
 function App() {
   return (
@@ -58,7 +99,22 @@ function App() {
         title="Derniers couturiers"
         subtitle="Ce mois-ci, 6 inscriptions dont 3 validées"
       >
-        Coucou
+        <CouturierList>
+          <CouturierElement>
+            <CouturierPhoto />
+            <div>
+              <CouturierTitle>Julien Michalet</CouturierTitle>
+              <Subtitle>Inscription hier à 23h20</Subtitle>
+            </div>
+          </CouturierElement>
+          <CouturierElement>
+            <CouturierPhoto />
+            <div>
+              <CouturierTitle>Julien Michalet</CouturierTitle>
+              <Subtitle>Inscription hier à 23h20</Subtitle>
+            </div>
+          </CouturierElement>
+        </CouturierList>
       </SectionColumn>
       {/* <img src={logo} className="App-logo" alt="logo" /> */}
       {/* <p>Edit <code>src/App.js</code> and save to reload.</p> */}
