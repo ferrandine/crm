@@ -79,6 +79,7 @@ const SectionColumn = ({ title, subtitle, children }) => {
 
 const Row = styled.div`
   display: flex;
+  align-items: flex-start;
 `;
 
 export const HomeApp = () => {
