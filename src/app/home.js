@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import { getLastSewersRegistered } from "services/sewer";
+import { getLastClientsRegistered } from "services/client";
+
 import { space, radius, color } from "const";
 
 import { Title, Subtitle } from "components/atoms";
@@ -81,13 +83,21 @@ const Row = styled.div`
 
 export const HomeApp = () => {
   const [sewers, setSewers] = useState(null);
-  const getLastSewers = () => {
+  const [clients, setClients] = useState(null);
+
+  const getLastSewers = () =>
     getLastSewersRegistered().then(respValue => setSewers(respValue));
+
+  const getLastClients = () => {
+    getLastClientsRegistered().then(respValue => {
+      setClients(respValue);
+    });
   };
 
   useEffect(() => {
     getLastSewers();
-  });
+    getLastClients();
+  }, []);
 
   return (
     <Row>
@@ -113,8 +123,8 @@ export const HomeApp = () => {
         subtitle="Ce mois-ci, 6 inscriptions dont 3 validées"
       >
         <CouturierList>
-          {sewers &&
-            sewers.map(s => (
+          {clients &&
+            clients.map(s => (
               <CouturierElement>
                 <div>
                   <CouturierTitle>{s.name}</CouturierTitle>
