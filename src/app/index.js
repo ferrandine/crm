@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Sidebar } from "components/organisms";
+import { Sidebar, Topbar } from "components/organisms";
 
 import { HomeApp } from "./home";
 
@@ -14,11 +14,21 @@ const Layout = styled.div`
   background: #f3f4f7;
 `;
 
+const Main = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+
 function App() {
   return (
     <Layout>
       <Sidebar />
-      <HomeApp />
+      <Main>
+        <Topbar />
+        <HomeApp />
+      </Main>
     </Layout>
   );
 }
