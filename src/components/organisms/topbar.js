@@ -12,6 +12,7 @@ const TopbarStyle = styled.div`
   background: #efefef;
   padding: ${space.sm} ${space.lg};
   box-sizing: border-box;
+  margin-bottom: ${rem(40)};
 `;
 
 const Searchbar = styled.input`

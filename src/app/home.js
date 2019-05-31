@@ -10,7 +10,7 @@ const Column = styled.div`
   width: 20%;
   background: #fff;
   margin-left: 3rem;
-  padding: ${space.md} ${space.lg};
+  padding: ${space.md} ${space.md};
   border-radius: ${radius.big};
 `;
 
@@ -27,8 +27,8 @@ const CouturierElement = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  margin: 0 -${space.lg};
-  padding: ${space.lg};
+  margin: 0 -${space.md};
+  padding: ${space.md};
 `;
 
 const CouturierList = styled.div`
@@ -50,8 +50,8 @@ const CouturierList = styled.div`
 
 const CouturierPhoto = styled.img`
   display: block;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   background: lightgrey;
   border-radius: ${radius.big};
   margin-right: ${space.base};
@@ -59,7 +59,6 @@ const CouturierPhoto = styled.img`
 
 const CouturierTitle = styled.span`
   display: block;
-  margin-bottom: ${space.xxs};
 `;
 
 const SectionColumn = ({ title, subtitle, children }) => {
@@ -76,6 +75,10 @@ const SectionColumn = ({ title, subtitle, children }) => {
   );
 };
 
+const Row = styled.div`
+  display: flex;
+`;
+
 export const HomeApp = () => {
   const [sewers, setSewers] = useState(null);
   const getLastSewers = () => {
@@ -87,22 +90,40 @@ export const HomeApp = () => {
   });
 
   return (
-    <SectionColumn
-      title="Derniers couturiers"
-      subtitle="Ce mois-ci, 6 inscriptions dont 3 validées"
-    >
-      <CouturierList>
-        {sewers &&
-          sewers.map(s => (
-            <CouturierElement>
-              <CouturierPhoto />
-              <div>
-                <CouturierTitle>{s.name}</CouturierTitle>
-                <Subtitle>{s.registeringDate}</Subtitle>
-              </div>
-            </CouturierElement>
-          ))}
-      </CouturierList>
-    </SectionColumn>
+    <Row>
+      <SectionColumn
+        title="Derniers couturiers"
+        subtitle="Ce mois-ci, 6 inscriptions dont 3 validées"
+      >
+        <CouturierList>
+          {sewers &&
+            sewers.map(s => (
+              <CouturierElement>
+                <CouturierPhoto />
+                <div>
+                  <CouturierTitle>{s.name}</CouturierTitle>
+                  <Subtitle>{s.registeringDate}</Subtitle>
+                </div>
+              </CouturierElement>
+            ))}
+        </CouturierList>
+      </SectionColumn>
+      <SectionColumn
+        title="Derniers clients"
+        subtitle="Ce mois-ci, 6 inscriptions dont 3 validées"
+      >
+        <CouturierList>
+          {sewers &&
+            sewers.map(s => (
+              <CouturierElement>
+                <div>
+                  <CouturierTitle>{s.name}</CouturierTitle>
+                  <Subtitle>{s.registeringDate}</Subtitle>
+                </div>
+              </CouturierElement>
+            ))}
+        </CouturierList>
+      </SectionColumn>
+    </Row>
   );
 };
