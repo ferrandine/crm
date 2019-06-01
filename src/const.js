@@ -21,6 +21,13 @@ export const font = {
   }
 };
 
+export const device = {
+  mobile: 480,
+  portraitTablet: 768,
+  landscapeTablet: 1024,
+  desktop: 1200
+};
+
 export const color = {
   grey: {
     base: "#9f9f9f"
