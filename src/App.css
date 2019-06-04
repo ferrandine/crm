@@ -1,10 +1,68 @@
-.container {
+@font-face {
+  font-family: "Avenir";
+  src: url("assets/fonts/Avenir-Light.woff2") format("woff2"),
+    url("assets/fonts/Avenir-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir";
+  src: url("assets/fonts/Avenir-Medium.woff2") format("woff2"),
+    url("assets/fonts/Avenir-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* @font-face {
+  font-family: "Avenir Book";
+  src: url("assets/fonts/Avenir-Book.woff2") format("woff2"),
+    url("assets/fonts/Avenir-Book.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+} */
+
+@font-face {
+  font-family: "Avenir";
+  src: url("assets/fonts/Avenir-Heavy.woff2") format("woff2"),
+    url("assets/fonts/Avenir-Heavy.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+
+/* 
+@font-face {
+  font-family: "Avenir";
+  src: url("Avenir-Black.woff2") format("woff2"),
+    url("Avenir-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Avenir";
+  font-weight: normal;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  min-height: 100vh;
   display: flex;
   height: 100%;
 }
 
 .sidebar {
-  background:#e16a4b;
+  background: #e16a4b;
   width: 245px;
 }
 
