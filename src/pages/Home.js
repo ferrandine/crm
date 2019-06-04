@@ -65,6 +65,7 @@ const View = styled.div`
   display: grid;
   flex: 1;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: min-content;
   gap: ${space.xl};
   padding: ${space.xl};
 `;
@@ -105,7 +106,7 @@ export const Home = () => {
         subtitle="Ce mois-ci, 6 inscriptions dont 3 validées"
       >
         <CouturierList>
-          {sewers.map(s => (
+          {sewers.slice(0,6).map(s => (
               <CouturierElement>
                 <Picture src={s.picture}/>
                 <div>
