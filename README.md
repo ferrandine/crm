@@ -2,12 +2,7 @@
 
 ## Development
 
-Install dependencies:
-```sh
-yarn install
-```
+To start your development server:
 
-Serve the project:
-```sh
-yarn start
-```
+  * Install dependencies with `yarn install`
+  * Serve the project with `yarn start`
