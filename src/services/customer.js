@@ -1,4 +1,4 @@
-export const getLastClientsRegistered = () => {
+export const getLastCustomersRegistered = () => {
   return Promise.resolve([
     {
       uuid: "1",

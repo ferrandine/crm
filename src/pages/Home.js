@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { rem } from "polished";
 
 import { getLastSewersRegistered } from "services/sewer";
-import { getLastClientsRegistered } from "services/client";
+import { getLastCustomersRegistered } from "services/customer";
 
 import { space, radius, color } from "const";
 
-import { Title, Subtitle } from "components/atoms";
+import { Title as Heading, Subtitle } from "components/atoms";
 
 const Column = styled.div`
-  width: 20%;
   background: #fff;
-  margin-left: 3rem;
   padding: ${space.md} ${space.md};
   border-radius: ${radius.big};
 `;
@@ -50,7 +49,7 @@ const CouturierList = styled.div`
   }
 `;
 
-const CouturierPhoto = styled.img`
+const Picture = styled.img`
   display: block;
   width: 40px;
   height: 40px;
@@ -59,8 +58,14 @@ const CouturierPhoto = styled.img`
   margin-right: ${space.base};
 `;
 
-const CouturierTitle = styled.span`
-  display: block;
+const Title = styled.div``;
+
+const View = styled.div`
+  display: grid;
+  flex: 1;
+  grid-template-columns: repeat(auto-fill, 20%);
+  column-gap: ${space.xl};
+  padding: ${space.xl};
 `;
 
 const SectionColumn = ({ title, subtitle, children }) => {
@@ -68,7 +73,7 @@ const SectionColumn = ({ title, subtitle, children }) => {
     <Column>
       <HeadColumn>
         <div>
-          <Title type="h3">{title}</Title>
+          <Heading type="h3">{title}</Heading>
           <Subtitle>{subtitle}</Subtitle>
         </div>
       </HeadColumn>
@@ -77,42 +82,33 @@ const SectionColumn = ({ title, subtitle, children }) => {
   );
 };
 
-const Row = styled.div`
-  display: flex;
-  align-items: flex-start;
-`;
-
-export const HomeApp = () => {
-  const [sewers, setSewers] = useState(null);
-  const [clients, setClients] = useState(null);
-
-  const getLastSewers = () =>
-    getLastSewersRegistered().then(respValue => setSewers(respValue));
-
-  const getLastClients = () => {
-    getLastClientsRegistered().then(respValue => {
-      setClients(respValue);
-    });
-  };
+export const Home = () => {
+  const [sewers, setSewers] = useState([]);
+  const [clients, setCustomers] = useState([]);
 
   useEffect(() => {
-    getLastSewers();
-    getLastClients();
+    getLastSewersRegistered().then(setSewers).catch(error => {
+      console.error(error);
+      throw error;
+    });
+  }, []);
+
+  useEffect(() => {
+    getLastCustomersRegistered().then(setCustomers);
   }, []);
 
   return (
-    <Row>
+    <View>
       <SectionColumn
         title="Derniers couturiers"
         subtitle="Ce mois-ci, 6 inscriptions dont 3 validées"
       >
         <CouturierList>
-          {sewers &&
-            sewers.map(s => (
+          {sewers.map(s => (
               <CouturierElement>
-                <CouturierPhoto />
+                <Picture src={s.picture}/>
                 <div>
-                  <CouturierTitle>{s.name}</CouturierTitle>
+                  <Title>{`${s.first_name} ${s.last_name}`}</Title>
                   <Subtitle>{s.registeringDate}</Subtitle>
                 </div>
               </CouturierElement>
@@ -128,13 +124,13 @@ export const HomeApp = () => {
             clients.map(s => (
               <CouturierElement>
                 <div>
-                  <CouturierTitle>{s.name}</CouturierTitle>
+                  <Title>{s.name}</Title>
                   <Subtitle>{s.registeringDate}</Subtitle>
                 </div>
               </CouturierElement>
             ))}
         </CouturierList>
       </SectionColumn>
-    </Row>
+    </View>
   );
 };
