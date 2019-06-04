@@ -1,37 +1,35 @@
 import React from "react";
 import styled from "styled-components";
 import { ifProp } from "styled-tools";
-
+import { Link } from '@reach/router';
 import { space } from "const";
 
-const SidebarStyle = styled.div`
-  width: 25%;
-  height: 100vh;
-  background: #fff;
+const View = styled.div`
+  background: #e16a4b;
+  width: 245px;
 `;
 
 const Navbar = styled.ul`
-  padding-left: 3rem;
-  padding-top: 15rem;
+  display: grid;
+  row-gap: ${space.base};
   list-style: none;
 `;
 
-const NavbarLink = styled.li`
-  display: block;
-  margin-bottom: ${space.base};
-  color: #9f9f9f;
+const NavLink = styled(Link)`
+  color: #ffffff;
+  text-decoration: none;
 
-  ${ifProp("active", "color: black;")}
+  ${ifProp("active", "font-weight: 500;")}
 `;
 
 export const Sidebar = () => {
   return (
-    <SidebarStyle>
+    <View>
       <Navbar>
-        <NavbarLink>Accueil</NavbarLink>
-        <NavbarLink active>Couturiers</NavbarLink>
-        <NavbarLink>Clients</NavbarLink>
+        <NavLink to="/">Accueil</NavLink>
+        <NavLink to="/sewers">Couturiers</NavLink>
+        <NavLink to="/customers">Clients</NavLink>
       </Navbar>
-    </SidebarStyle>
+    </View>
   );
 };

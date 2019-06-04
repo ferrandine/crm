@@ -10,7 +10,8 @@ export const space = {
   sm: rem(12),
   base: rem(16),
   md: rem(20),
-  lg: rem(24)
+  l: rem(24),
+  xl: rem(32)
 };
 
 export const font = {
