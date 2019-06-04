@@ -7,7 +7,7 @@ export const radius = {
 export const space = {
   xxs: rem(4),
   xs: rem(8),
-  sm: rem(12),
+  s: rem(12),
   base: rem(16),
   md: rem(20),
   l: rem(24),
