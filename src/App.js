@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-
+import { space } from 'const';
 import { Sidebar, Topbar } from "components/organisms";
 
 import { Router } from '@reach/router';
@@ -24,6 +24,7 @@ const Main = styled.div`
 const SRouter = styled(Router)`
   display: flex;
   flex: 1;
+  margin-bottom: ${space.l};
   overflow: auto;
 `
 
