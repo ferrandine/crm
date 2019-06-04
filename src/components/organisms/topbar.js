@@ -6,7 +6,7 @@ import { font, space } from "const";
 import { Button, Select } from "components/atoms";
 
 const View = styled.div`
-  background: #efefef;
+  background: white;
   display: grid;
   grid-template-columns: 1fr max-content;
   column-gap: ${space.md};

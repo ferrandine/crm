@@ -12,7 +12,7 @@ import "App.css";
 const Layout = styled.div`
   display: flex;
   height: 100%;
-  background: #f3f4f7;
+  background: #fdf7f6;
 `;
 
 const Main = styled.div`
