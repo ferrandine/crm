@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.sidebar {
+  background:#e16a4b;
+  width: 245px;
+}
+
+.content {
+  flex: 1;
+}
