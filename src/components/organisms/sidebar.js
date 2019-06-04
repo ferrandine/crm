@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { ifProp } from "styled-tools";
 import { Link } from '@reach/router';
 import { space } from "const";
