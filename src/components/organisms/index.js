@@ -1,4 +1,5 @@
+import { Page } from "./Page"
 import { Sidebar } from "./sidebar";
 import { Topbar } from "./topbar";
 
-export { Sidebar, Topbar };
+export { Sidebar, Topbar, Page };

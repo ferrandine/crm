@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components/macro";
 import { rem } from "polished";
-
 import { getLastSewersRegistered } from "services/sewer";
 import { getLastCustomersRegistered } from "services/customer";
-
 import { space, radius, color } from "const";
-
 import { Title as Heading, Subtitle } from "components/atoms";
+import { Page } from "components/organisms";
 
 const Column = styled.div`
   background: #fff;
@@ -59,15 +57,11 @@ const Picture = styled.img`
   margin-right: ${space.base};
 `;
 
-const Title = styled.div``;
-
-const View = styled.div`
+const Container = styled.div`
   display: grid;
-  flex: 1;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-auto-rows: min-content;
   gap: ${space.xl};
-  padding: ${space.xl};
 `;
 
 const SectionColumn = ({ title, subtitle, children }) => {
@@ -86,21 +80,20 @@ const SectionColumn = ({ title, subtitle, children }) => {
 
 export const Home = () => {
   const [sewers, setSewers] = useState([]);
-  const [clients, setCustomers] = useState([]);
 
   useEffect(() => {
-    getLastSewersRegistered().then(setSewers).catch(error => {
-      console.error(error);
-      throw error;
-    });
+    getLastSewersRegistered().then(setSewers);
   }, []);
+
+  const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
     getLastCustomersRegistered().then(setCustomers);
   }, []);
 
   return (
-    <View>
+    <Page>
+      <Container>
       <SectionColumn
         title="Derniers couturiers"
         subtitle="Ce mois-ci, 6 inscriptions dont 3 validées"
@@ -110,7 +103,7 @@ export const Home = () => {
               <CouturierElement>
                 <Picture src={s.picture}/>
                 <div>
-                  <Title>{`${s.first_name} ${s.last_name}`}</Title>
+                  <div>{`${s.first_name} ${s.last_name}`}</div>
                   <Subtitle>{s.registeringDate}</Subtitle>
                 </div>
               </CouturierElement>
@@ -118,21 +111,21 @@ export const Home = () => {
         </CouturierList>
       </SectionColumn>
       <SectionColumn
-        title="Derniers clients"
+        title="Derniers customers"
         subtitle="Ce mois-ci, 6 inscriptions dont 3 validées"
       >
         <CouturierList>
-          {clients &&
-            clients.map(s => (
+          {customers.map(c => (
               <CouturierElement>
                 <div>
-                  <Title>{s.name}</Title>
-                  <Subtitle>{s.registeringDate}</Subtitle>
+                  <div>{c.name}</div>
+                  <Subtitle>{c.registeringDate}</Subtitle>
                 </div>
               </CouturierElement>
             ))}
         </CouturierList>
       </SectionColumn>
-    </View>
+    </Container>
+    </Page>
   );
 };

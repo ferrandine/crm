@@ -6,6 +6,7 @@ import { Sidebar, Topbar } from "components/organisms";
 import { Router } from '@reach/router';
 import { Home } from "./pages/Home";
 import { Customers } from './pages/Customers';
+import { Sewers } from './pages/Sewers';
 
 import "App.css";
 
@@ -37,6 +38,7 @@ function App() {
         <SRouter >
           <Home path="/" />
           <Customers path="/customers" />
+          <Sewers path="/sewers" />
         </SRouter>
       </Main>
     </Layout>
