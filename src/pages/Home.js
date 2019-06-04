@@ -13,6 +13,7 @@ const Column = styled.div`
   background: #fff;
   padding: ${space.md} ${space.md};
   border-radius: ${radius.big};
+  overflow: auto;
 `;
 
 const HeadColumn = styled.div`
@@ -63,8 +64,8 @@ const Title = styled.div``;
 const View = styled.div`
   display: grid;
   flex: 1;
-  grid-template-columns: repeat(auto-fill, 20%);
-  column-gap: ${space.xl};
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: ${space.xl};
   padding: ${space.xl};
 `;
 

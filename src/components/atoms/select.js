@@ -4,7 +4,7 @@ import { rem } from "polished";
 import { font, space, radius, color } from "const";
 
 export const Select = styled.select`
-  border: none;
+  border: 1px solid #ededed;
   padding: ${space.base} ${space.base};
   font-weight: ${font.weight.bolder};
   font-size: ${rem(12)};
