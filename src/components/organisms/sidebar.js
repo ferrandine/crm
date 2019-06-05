@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { ifProp } from "styled-tools";
-import { Link } from '@reach/router';
+import { NavLink } from 'components/atoms';
 import { space } from "const";
 
 const View = styled.div`
@@ -13,13 +12,6 @@ const Navbar = styled.ul`
   display: grid;
   row-gap: ${space.base};
   list-style: none;
-`;
-
-const NavLink = styled(Link)`
-  color: #ffffff;
-  text-decoration: none;
-
-  ${ifProp("active", "font-weight: 500;")}
 `;
 
 export const Sidebar = () => {
